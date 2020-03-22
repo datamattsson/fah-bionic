@@ -41,11 +41,13 @@ These procedures assumes you already have a Ubuntu 18.04 desktop running. If the
 
 # FAQ
 
-- How do I create a bootable USB stick?
-  There are multiple ways to do this. [Unetbootin](https://unetbootin.github.io/) (Windows, Linux, Mac), [balenaEtcher](https://www.balena.io/etcher/) (Mac) and [Rufus](https://rufus.ie) (Windows).
+#### How do I create a bootable USB stick?
 
-- What is protein folding?
-  It's best described on [this Wikipedia page](https://en.wikipedia.org/wiki/Protein_folding).
+There are multiple ways to do this. [Unetbootin](https://unetbootin.github.io/) (Windows, Linux, Mac), [balenaEtcher](https://www.balena.io/etcher/) (Mac) and [Rufus](https://rufus.ie) (Windows).
+
+#### What is protein folding?
+
+It's best described on [this Wikipedia page](https://en.wikipedia.org/wiki/Protein_folding).
 
 # Acknowledgements
 This work was possible thanks to the docker image built by [Alexander Malic](https://www.linkedin.com/in/alexandermalic).
