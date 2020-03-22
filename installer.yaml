@@ -1,0 +1,94 @@
+---
+- hosts: localhost
+  vars_prompt:
+  - name: fah_username
+    prompt: "What is your FAH username?"
+    default: "Anonymous"
+    private: no
+
+  - name: fah_team
+    prompt: "Do you want to join a team?"
+    default: "0"
+    private: no
+
+  - name: fah_gpu
+    prompt: "Does your computer have a NVIDIA GPU with the latest drivers installed? (true or false)"
+    default: "false"
+    private: no
+
+  vars:
+    fah_pre_packages:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    fah_post_packages:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - nvidia-container-toolkit
+    fah_apt_keys:
+    - https://download.docker.com/linux/ubuntu/gpg
+    - https://nvidia.github.io/nvidia-docker/gpgkey
+    fah_nvidia_sources: https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list
+    fah_docker_deb: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+    
+  tasks:
+  - name: Install pre-packages
+    become: yes
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items: "{{ fah_pre_packages }}" 
+
+  - name: Add GPG keys
+    become: yes
+    apt_key:
+      url: "{{ item }}"
+      state: present
+    with_items: "{{ fah_apt_keys }}"
+
+  - name: Add NVIDIA repo
+    become: yes
+    get_url:
+      url: "{{ fah_nvidia_sources }}"
+      dest: /etc/apt/sources.list.d/nvidia-docker.list
+
+  - name: Add Docker CE repo
+    become: yes
+    apt_repository:
+      repo: "{{ fah_docker_deb }}"
+      state: present
+
+  - name: Install post-packages
+    become: yes
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items: "{{ fah_post_packages }}" 
+
+  - name: Ensure no current workload is running
+    become: yes
+    command: docker rm -f fah
+    ignore_errors: yes
+
+  - name: Start FAH client (CPU)
+    become: yes
+    command: docker run --name fah 
+             -e USE_GPU=false 
+             -e USERNAME={{ fah_username }}
+             -e TEAM={{ fah_team }}
+             --restart unless-stopped 
+             -p 8080:7396 -d amalic/nvdocker-folding-home
+    when: fah_gpu == "false"
+
+  - name: Start FAH client (GPU)
+    become: yes
+    command: docker run --name fah 
+             -e USERNAME={{ fah_username }}
+             -e TEAM={{ fah_team }}
+             --gpus all
+             --restart unless-stopped 
+             -p 8080:7396 -d amalic/nvdocker-folding-home
+    when: fah_gpu == "true"
