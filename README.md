@@ -22,7 +22,7 @@ This assumes the default mode by booting a PC from a USB stick. If you already h
 ```
 wget -q https://datamattsson.io/fah-bionic-bootstrap -O- | sudo -E bash
 ```
-**Note:** If typing this manually `-O-` is the letter O.
+**Note:** If typing the above manually `-O-` is the letter O.
 - When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
 - Thank you for donating your resources to fight COVID-19.
 
@@ -38,7 +38,7 @@ These procedures assumes you already have a Ubuntu 18.04 desktop running. If the
   wget -q datamattsson.io/fah-bionic-installer -O /tmp/installer.yaml
   sudo ansible-playbook /tmp/installer.yaml
   ```
-  **Note:** If typing this manually `-O-` is the letter O.
+  **Note:** If typing the above manually `-O` is the letter O.
 - When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
 
 # FAQ
