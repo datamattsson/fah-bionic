@@ -1,6 +1,8 @@
 # Overview
 These set of scripts and Ansible playbooks is supposed to be used on a desktop Ubuntu 18.04.4 LIVE booted x86 PC with unfettered access to the Internet. It turns the computer into a [Folding@Home](https://foldingathome.org/) (FAH) client that at this time of writing (3/21/20) has diverted its [entire distributed computing project](https://foldingathome.org/2020/03/15/coronavirus-what-were-doing-and-how-you-can-help-in-simple-terms/) to fight COVID-19.
 
+![FAH](assets/fah.png)
+
 # Before you begin
 Running the FAH client on an idle computer means it consume idle CPU/GPU cycles to perform protein folding. This means that the computer will draw more power than usual. Make sure you have permission from whomever pays the bill to run the FAH client.
 
