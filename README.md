@@ -9,7 +9,7 @@ This assumes the default mode by booting a PC from a USB stick. If you already h
 - On the Ubuntu desktop, right-click and select "Open Terminal" at the bottom of the popup menu.
 - Optional: If you want you use a particular username, team or want to use a NVIDIA GPU, here are some variables to set:
   ```
-  export USERNAME=MyUserName
+  export FOLDER=MyUserName
   export TEAM=MyTeamNumber
   export USE_GPU=true
   ```
