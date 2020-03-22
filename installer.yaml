@@ -108,4 +108,4 @@
              --gpus all
              --restart unless-stopped 
              -p 8080:7396 -d {{ fah_image }}
-    when: fah_gpu == "true"
+    when: fah_gpu == true
