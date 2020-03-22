@@ -8,6 +8,8 @@ Running the FAH client on an idle computer means it consume idle CPU/GPU cycles 
 
 If the host is already installed with Ubuntu 18.04 and Docker there will most likely be a conflict unless you're using the official Docker, Inc repos, then you'll be fine. The installer does not resolve conflicting docker versions and you might end up with a broken system. If you're an advanced user you are better off following the instructions of the [upstream docker image](https://hub.docker.com/r/amalic/nvdocker-folding-home) being used in this project.
 
+The intention of this project is to create a dedicated PC performing protein folding. If you want to use your day-to-day computer to donate CPU/GPU cycles to fight COVID-19, you're much better off simply installing the regular client from [the FAH website](https://foldingathome.org/start-folding/).
+
 # Get started
 This assumes the default mode by booting a PC from a USB stick. If you already have Ubuntu 18.04 installed or want to use your NVIDIA GPU, check the alternative install method.
 
