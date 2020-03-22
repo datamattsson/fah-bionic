@@ -11,11 +11,6 @@
     default: "0"
     private: no
 
-  - name: fah_gpu
-    prompt: "Does your computer have a NVIDIA GPU with the latest drivers installed? (true or false)"
-    default: "false"
-    private: no
-
   vars:
     fah_pre_packages:
     - apt-transport-https
@@ -28,10 +23,6 @@
     - docker-ce-cli
     - containerd.io
     - nvidia-container-toolkit
-    fah_gpu_packages:
-    - dkms
-    - build-essential
-    - nvidia-driver-440
     fah_apt_keys:
     - https://download.docker.com/linux/ubuntu/gpg
     - https://nvidia.github.io/nvidia-docker/gpgkey
@@ -68,28 +59,15 @@
       state: latest
     with_items: "{{ fah_post_packages }}" 
 
-  - name: Inspect if NVIDIA driver is available
-    command: modinfo nvidia
-    ignore_errors: yes
-    register: fah_gpu_module
+  - name: Check if nvidiactl exist
+    stat:
+      path: /dev/nvidiactl
+    register: fah_nvidiactl
 
-  - name: Install and enable NVIDIA GPU
-    block:
-    - name: Add graphics-driver repo
-      apt_repository:
-        repo: ppa:graphics-drivers/ppa
-
-    - name: Install gpu-packages
-      package:
-        name: "{{ item }}"
-        state: latest
-      with_items: "{{ fah_gpu_packages }}" 
-
-    when: fah_gpu == "true" and fah_gpu_module.rc == "1"
-
-  - name: Ensure kernel modules are loaded
-    command: modprobe nvidia
-    when: fah_gpu == "true"
+  - name: NVIDIA GPU present
+    set_fact: 
+      fah_gpu: "true"
+    when: fah_nvidiactl.stat.exists
 
   - name: Identify runtime mode
     stat:
