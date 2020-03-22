@@ -12,6 +12,7 @@
     private: no
 
   vars:
+    fah_gpu: false
     fah_pre_packages:
     - apt-transport-https
     - ca-certificates
@@ -66,7 +67,7 @@
 
   - name: NVIDIA GPU present
     set_fact: 
-      fah_gpu: "true"
+      fah_gpu: true
     when: fah_nvidiactl.stat.exists
 
   - name: Identify runtime mode
@@ -99,7 +100,7 @@
              -e TEAM={{ fah_team }}
              --restart unless-stopped 
              -p 8080:7396 -d {{ fah_image }}
-    when: fah_gpu == "false"
+    when: fah_gpu == false
 
   - name: Start FAH client (GPU)
     command: docker run --name fah 

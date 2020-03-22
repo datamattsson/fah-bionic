@@ -55,6 +55,10 @@ There are multiple ways to do this. [Unetbootin](https://unetbootin.github.io/) 
 
 It's best described on [this Wikipedia page](https://en.wikipedia.org/wiki/Protein_folding).
 
+#### My FAH client is not getting any work?
+
+That means the FAH team is busy generating workloads for FAH clients. Be patient, your computer will soon be put to good use!
+
 # Acknowledgements
 This work was possible thanks to the [docker image](https://hub.docker.com/r/amalic/nvdocker-folding-home) built by [Alexander Malic](https://www.linkedin.com/in/alexandermalic).
 
