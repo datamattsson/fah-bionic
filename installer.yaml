@@ -70,6 +70,7 @@
 
   - name: Inspect if NVIDIA driver is available
     command: modinfo nvidia
+    ignore_errors: true
     register: fah_gpu_module
 
   - name: Install and enable NVIDIA GPU
