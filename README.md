@@ -1,5 +1,10 @@
 # Overview
-These set of scripts and Ansible playbooks is supposed to be used on a desktop Ubuntu 18.04.4 LIVE booted x86 PC with unfettered access to the Internet. It turns the computer into a Folding @ Home client that at this time of writing (3/21/20) has diverted its entire distributed computing project to fight COVID-19.
+These set of scripts and Ansible playbooks is supposed to be used on a desktop Ubuntu 18.04.4 LIVE booted x86 PC with unfettered access to the Internet. It turns the computer into a [Folding@Home](https://foldingathome.org/) (FAH) client that at this time of writing (3/21/20) has diverted its [entire distributed computing project](https://foldingathome.org/2020/03/15/coronavirus-what-were-doing-and-how-you-can-help-in-simple-terms/) to fight COVID-19.
+
+# Before you begin
+Running the FAH client on an idle computer means it consume idle CPU/GPU cycles to perform protein folding. This means that the computer will draw more power than usual. Make sure you have permission from whomever pays the bill to run the FAH client.
+
+If the host is already installed with Ubuntu 18.04 and Docker there will most likely be a conflict unless you're using the official Docker, Inc repos, then you'll be fine. The installer does not resolve conflicting docker versions and you might end up with a broken system.
 
 # Get started
 This assumes the default mode by booting a PC from a USB stick. If you already have Ubuntu 18.04 installed or want to use your NVIDIA GPU, check the alternative install method.
@@ -17,11 +22,11 @@ This assumes the default mode by booting a PC from a USB stick. If you already h
 ```
 wget -q https://datamattsson.io/fah-bionic-bootstrap -O- | sudo -E bash
 ```
-- When the installer finishes, the Folding @ Home client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
+- When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
 - Thank you for donating your resources to fight COVID-19.
 
 # Alternative install method
-These procedures assumes you already have a Ubuntu 18.04 desktop running. If the PC has a NVIDIA GPU with the proper driver loaded, the Folding @ Home client will use the GPU instead of the CPU when looking for work.
+These procedures assumes you already have a Ubuntu 18.04 desktop running. If the PC has a NVIDIA GPU with the proper driver loaded, the FAH client will use the GPU instead of the CPU when looking for work.
 
 - Install Ansible:
   ```
@@ -32,4 +37,18 @@ These procedures assumes you already have a Ubuntu 18.04 desktop running. If the
   wget -q datamattsson.io/fah-bionic-installer -O /tmp/installer.yaml
   sudo ansible-playbook /tmp/installer.yaml
   ```
-- When the installer finishes, the Folding @ Home client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
+- When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
+
+# FAQ
+
+- How do I create a bootable USB stick?
+  There are multiple ways to do this. [Unetbootin](https://unetbootin.github.io/) (Windows, Linux, Mac), [balenaEtcher](https://www.balena.io/etcher/) (Mac) and [Rufus](https://rufus.ie) (Windows).
+
+- What is protein folding?
+  It's best described on [this Wikipedia page](https://en.wikipedia.org/wiki/Protein_folding).
+
+# Acknowledgements
+This work was possible thanks to the docker image built by [Alexander Malic](https://www.linkedin.com/in/alexandermalic).
+
+# License
+This work is [licensed](LICENSE).
