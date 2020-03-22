@@ -105,6 +105,12 @@
     - command: systemctl daemon-reload
     when: fah_cow.stat.exists
 
+  - name: Ensure docker is restarted
+    service:
+      name: docker
+      enabled: yes
+      state: restarted
+
   - name: Ensure no current workload is running
     shell: docker rm -f fah || true
 

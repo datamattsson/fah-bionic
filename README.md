@@ -16,7 +16,7 @@ This assumes the default mode by booting a PC from a USB stick. If you already h
   **Note:** Default values are Anonymous, no team and not using a GPU.
 - Type the following into the Terminal and hit enter to start the installer:
 ```
-wget -q https://datamattsson.io/fah-bionic-bootstrap -O- | sudo bash
+wget -q https://datamattsson.io/fah-bionic-bootstrap -O- | sudo -E bash
 ```
 - When the installer finishes, the Folding @ Home client should be looking for work. Access the web UI on the computer by accessing https://localhost:8080
 - Thank you for donating your resources to fight COVID-19.
