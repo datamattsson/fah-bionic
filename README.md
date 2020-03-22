@@ -4,7 +4,7 @@ These set of scripts and Ansible playbooks is supposed to be used on a desktop U
 # Before you begin
 Running the FAH client on an idle computer means it consume idle CPU/GPU cycles to perform protein folding. This means that the computer will draw more power than usual. Make sure you have permission from whomever pays the bill to run the FAH client.
 
-If the host is already installed with Ubuntu 18.04 and Docker there will most likely be a conflict unless you're using the official Docker, Inc repos, then you'll be fine. The installer does not resolve conflicting docker versions and you might end up with a broken system.
+If the host is already installed with Ubuntu 18.04 and Docker there will most likely be a conflict unless you're using the official Docker, Inc repos, then you'll be fine. The installer does not resolve conflicting docker versions and you might end up with a broken system. If you're an advanced user you are better off following the instructions of the [upstream docker image](https://hub.docker.com/r/amalic/nvdocker-folding-home) being used in this project.
 
 # Get started
 This assumes the default mode by booting a PC from a USB stick. If you already have Ubuntu 18.04 installed or want to use your NVIDIA GPU, check the alternative install method.
@@ -22,6 +22,7 @@ This assumes the default mode by booting a PC from a USB stick. If you already h
 ```
 wget -q https://datamattsson.io/fah-bionic-bootstrap -O- | sudo -E bash
 ```
+**Note:** If typing this manually `-O-` is the letter O.
 - When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
 - Thank you for donating your resources to fight COVID-19.
 
@@ -37,6 +38,7 @@ These procedures assumes you already have a Ubuntu 18.04 desktop running. If the
   wget -q datamattsson.io/fah-bionic-installer -O /tmp/installer.yaml
   sudo ansible-playbook /tmp/installer.yaml
   ```
+  **Note:** If typing this manually `-O-` is the letter O.
 - When the installer finishes, the FAH client should be looking for work. Access the web UI on the computer by accessing [http://localhost:8080](http://localhost:8080)
 
 # FAQ
@@ -50,7 +52,7 @@ There are multiple ways to do this. [Unetbootin](https://unetbootin.github.io/) 
 It's best described on [this Wikipedia page](https://en.wikipedia.org/wiki/Protein_folding).
 
 # Acknowledgements
-This work was possible thanks to the docker image built by [Alexander Malic](https://www.linkedin.com/in/alexandermalic).
+This work was possible thanks to the [docker image](https://hub.docker.com/r/amalic/nvdocker-folding-home) built by [Alexander Malic](https://www.linkedin.com/in/alexandermalic).
 
 # License
 This work is [licensed](LICENSE).
