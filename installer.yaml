@@ -29,7 +29,7 @@
     - https://nvidia.github.io/nvidia-docker/gpgkey
     fah_nvidia_sources: https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list
     fah_docker_deb: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-    fah_image: drajen/nvdocker-folding-home
+    fah_image: amalic/nvdocker-folding-home
     
   tasks:
   - name: Install pre-packages
